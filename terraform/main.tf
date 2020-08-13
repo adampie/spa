@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "acm" {
-  domain_name               = "adampie.co.uk"
-  subject_alternative_names = ["*.adampie.co.uk"]
+  domain_name               = "spa.adampie.co.uk"
+  subject_alternative_names = ["*.spa.adampie.co.uk"]
   validation_method         = "DNS"
 
   lifecycle {
@@ -33,7 +33,7 @@ module "s3_acceleration" {
   bucket = "adampie-spa-s3-acceleration"
 }
 
-# https://spa-s3.adampie.co.uk
+# https://s3.spa.adampie.co.uk
 module "s3_cloudfront" {
   source = "./modules/s3_cloudfront"
 
@@ -43,7 +43,7 @@ module "s3_cloudfront" {
   origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
 }
 
-# https://spa-s3a.adampie.co.uk
+# https://s3a.spa.adampie.co.uk
 module "s3_acceleration_cloudfront" {
   source = "./modules/s3_acceleration_cloudfront"
 

@@ -40,7 +40,7 @@ resource "aws_cloudfront_distribution" "cloudfront" {
   is_ipv6_enabled     = true
   comment             = var.bucket
   default_root_object = "index.html"
-  aliases             = ["spa-s3.adampie.co.uk"]
+  aliases             = ["s3.spa.adampie.co.uk"]
   price_class         = "PriceClass_All"
 
   default_cache_behavior {
