@@ -16,7 +16,7 @@ env:
   AWS_DEFAULT_REGION: us-east-1
 
 jobs:
-  s3:
+  s3_acceleration:
     runs-on: ubuntu-latest
 
     steps:
