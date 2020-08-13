@@ -1,13 +1,3 @@
-resource "aws_acm_certificate" "acm" {
-  domain_name               = "adampie.co.uk"
-  subject_alternative_names = ["*.adampie.co.uk"]
-  validation_method         = "DNS"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "oai"
 }
