@@ -1,22 +1,22 @@
-name: Dashboard
+name: Benchmark
 
 on:
   push:
     branches: [master]
     paths:
-      - "dashboard/**"
-      - ".github/workflows/dashboard.yml"
+      - "benchmark/**"
+      - ".github/workflows/s3.yml"
 
 defaults:
   run:
-    working-directory: dashboard
+    working-directory: benchmark
 
 env:
-  BUCKET: spa.adampie.co.uk
+  BUCKET: spa1.adampie.co.uk
   AWS_DEFAULT_REGION: us-east-1
 
 jobs:
-  build:
+  s3:
     runs-on: ubuntu-latest
 
     steps:
