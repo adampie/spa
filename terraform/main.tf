@@ -34,6 +34,7 @@ module "s3_cloudfront" {
   source = "./modules/s3_cloudfront"
 
   bucket                          = "adampie-spa-s3-cloudfront"
+  acm_certificate_arn             = aws_acm_certificate.acm.arn
   cloudfront_access_identity_path = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
   origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
 }
@@ -42,6 +43,7 @@ module "s3_acceleration_cloudfront" {
   source = "./modules/s3_acceleration_cloudfront"
 
   bucket                          = "adampie-spa-s3-acceleration-cloudfront"
+  acm_certificate_arn             = aws_acm_certificate.acm.arn
   cloudfront_access_identity_path = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
   origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
 }
