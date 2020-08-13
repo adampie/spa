@@ -11,17 +11,17 @@ resource "aws_acm_certificate" "acm" {
 module "dashboard" {
   source = "./modules/s3"
 
-  bucket = "spa.adampie.co.uk"
+  bucket = "adampie-spa-dashboard"
 }
 
 module "s3" {
   source = "./modules/s3"
 
-  bucket = "spa1.adampie.co.uk"
+  bucket = "adampie-spa-s3"
 }
 
 module "s3_acceleration" {
   source = "./modules/s3_acceleration"
 
-  bucket = "spa2.adampie.co.uk"
+  bucket = "adampie-spa-s3-acceleration"
 }
