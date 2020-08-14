@@ -1,15 +1,15 @@
-name: Benchmark
+name: SPA
 
 on:
   push:
     branches: [master]
     paths:
-      - "benchmark/**"
+      - "app/**"
       - ".github/workflows/s3_cloudfront.yml"
 
 defaults:
   run:
-    working-directory: benchmark
+    working-directory: app
 
 env:
   BUCKET: spa-xyz-s3-cloudfront
