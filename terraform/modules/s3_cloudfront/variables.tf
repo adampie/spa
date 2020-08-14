@@ -17,3 +17,7 @@ variable "domain" {
 variable "acm_certificate_arn" {
   description = "ACM Certificate for Cloudfront"
 }
+
+variable "zone_id" {
+  description = "Zone id for Route 53"
+}
