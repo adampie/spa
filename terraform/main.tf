@@ -18,7 +18,7 @@ resource "aws_route53_record" "validation" {
       name    = dvo.resource_record_name
       record  = dvo.resource_record_value
       type    = dvo.resource_record_type
-      zone_id = dvo.domain_name == "singlepageapp.xyz" ? data.aws_route53_zone.dns.zone_id : data.aws_route53_zone.dns.zone_id
+      zone_id = dvo.domain_name == "singlepageapp.xyz" ? aws_route53_zone.dns.zone_id : aws_route53_zone.dns.zone_id
     }
   }
 
