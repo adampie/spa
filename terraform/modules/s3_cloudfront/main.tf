@@ -41,6 +41,7 @@ resource "aws_cloudfront_distribution" "cloudfront" {
   comment             = var.bucket
   default_root_object = "index.html"
   price_class         = "PriceClass_All"
+  aliases             = [var.domain, "www.${var.domain}"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -68,6 +69,8 @@ resource "aws_cloudfront_distribution" "cloudfront" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = var.acm_certificate_arn
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2019"
   }
 }
