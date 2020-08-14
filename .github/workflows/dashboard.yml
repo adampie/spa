@@ -12,11 +12,11 @@ defaults:
     working-directory: dashboard
 
 env:
-  BUCKET: adampie-spa-dashboard
+  BUCKET: spa-xyz-dashboard
   AWS_DEFAULT_REGION: us-east-1
 
 jobs:
-  build:
+  dashboard:
     runs-on: ubuntu-latest
 
     steps:

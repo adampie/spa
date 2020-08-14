@@ -12,7 +12,7 @@ defaults:
     working-directory: benchmark
 
 env:
-  BUCKET: adampie-spa-s3-acceleration
+  BUCKET: spa-xyz-s3-acceleration
   AWS_DEFAULT_REGION: us-east-1
 
 jobs:
