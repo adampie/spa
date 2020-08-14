@@ -30,7 +30,7 @@ resource "aws_route53_record" "validation" {
 
 resource "aws_acm_certificate_validation" "cert" {
   certificate_arn         = aws_acm_certificate.acm.arn
-  validation_record_fqdns = [for record in aws_route53_record.validation: record.fqdn]
+  validation_record_fqdns = aws_route53_record.validation.0.fqdn]
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
