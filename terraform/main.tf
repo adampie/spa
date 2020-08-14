@@ -15,22 +15,24 @@ resource "aws_acm_certificate" "acm" {
 resource "aws_route53_record" "validation" {
   for_each = {
     for dvo in aws_acm_certificate.acm.domain_validation_options : dvo.domain_name => {
-      name   = dvo.resource_record_name
-      record = dvo.resource_record_value
-      type   = dvo.resource_record_type
+      name    = dvo.resource_record_name
+      record  = dvo.resource_record_value
+      type    = dvo.resource_record_type
+      zone_id = dvo.domain_name == "singlepageapp.xyz" ? data.aws_route53_zone.dns.zone_id : data.aws_route53_zone.dns.zone_id
     }
   }
+
   allow_overwrite = true
   name            = each.value.name
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.dns.zone_id
+  zone_id         = each.value.zone_id
 }
 
 resource "aws_acm_certificate_validation" "cert" {
   certificate_arn         = aws_acm_certificate.acm.arn
-  validation_record_fqdns = aws_route53_record.validation.0.fqdn
+  validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
