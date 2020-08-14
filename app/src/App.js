@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {getCLS, getFID, getLCP} from 'web-vitals';
 
 function App() {
   return (
@@ -24,3 +25,7 @@ function App() {
 }
 
 export default App;
+
+getCLS(console.log);
+getFID(console.log);
+getLCP(console.log);
