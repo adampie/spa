@@ -14,7 +14,7 @@ resource "aws_acm_certificate" "acm" {
 
 resource "aws_route53_record" "validation" {
   for_each = {
-    for dvo in aws_acm_certificate.acm.domain_validation_options: dvo.domain_name => {
+    for dvo in aws_acm_certificate.acm.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -38,9 +38,12 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 }
 
 module "dashboard" {
-  source = "./modules/s3"
+  source = "./modules/s3_cloudfront"
 
-  bucket = "spa-xyz-dashboard"
+  domain                          = "singlepageapp.xyz"
+  bucket                          = "spa-xyz-dashboard"
+  cloudfront_access_identity_path = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
+  origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
 }
 
 module "s3" {
@@ -58,6 +61,7 @@ module "s3_acceleration" {
 module "s3_cloudfront" {
   source = "./modules/s3_cloudfront"
 
+  domain                          = "us-east-1.singlepageapp.xyz"
   bucket                          = "spa-xyz-s3-cloudfront"
   cloudfront_access_identity_path = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
   origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn

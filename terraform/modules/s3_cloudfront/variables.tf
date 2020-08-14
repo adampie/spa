@@ -9,3 +9,11 @@ variable "cloudfront_access_identity_path" {
 variable "origin_access_identity_iam_arn" {
   description = "OAI for Bucket policy"
 }
+
+variable "domain" {
+  description = "Domain for Cloudfront"
+}
+
+variable "acm_certificate_arn" {
+  description = "ACM Certificate for Cloudfront"
+}
