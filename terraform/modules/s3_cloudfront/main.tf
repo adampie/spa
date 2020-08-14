@@ -41,7 +41,7 @@ resource "aws_cloudfront_distribution" "cloudfront" {
   comment             = var.bucket
   default_root_object = "index.html"
   price_class         = "PriceClass_All"
-  aliases             = [var.domain, "www.${var.domain}"]
+  aliases             = [var.domain]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -72,5 +72,29 @@ resource "aws_cloudfront_distribution" "cloudfront" {
     acm_certificate_arn      = var.acm_certificate_arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
+  }
+}
+
+resource "aws_route53_record" "a" {
+  zone_id = var.zone_id
+  name    = var.domain
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.cloudfront.domain_name
+    zone_id                = aws_cloudfront_distribution.cloudfront.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "aaaa" {
+  zone_id = var.zone_id
+  name    = var.domain
+  type    = "AAAA"
+
+  alias {
+    name                   = aws_cloudfront_distribution.cloudfront.domain_name
+    zone_id                = aws_cloudfront_distribution.cloudfront.hosted_zone_id
+    evaluate_target_health = false
   }
 }

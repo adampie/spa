@@ -44,6 +44,7 @@ module "dashboard" {
 
   domain                          = "singlepageapp.xyz"
   bucket                          = "spa-xyz-dashboard"
+  zone_id                         = aws_route53_zone.dns.zone_id
   acm_certificate_arn             = aws_acm_certificate.acm.arn
   cloudfront_access_identity_path = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
   origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
@@ -66,6 +67,7 @@ module "s3_cloudfront" {
 
   domain                          = "us-east-1.singlepageapp.xyz"
   bucket                          = "spa-xyz-s3-cloudfront"
+  zone_id                         = aws_route53_zone.dns.zone_id
   acm_certificate_arn             = aws_acm_certificate.acm.arn
   cloudfront_access_identity_path = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
   origin_access_identity_iam_arn  = aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn
