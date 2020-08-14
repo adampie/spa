@@ -2,15 +2,15 @@ resource "aws_route53_zone" "dns" {
   name = "singlepageapp.xyz"
 }
 
-# resource "aws_acm_certificate" "acm" {
-#   domain_name               = "singlepageapp.xyz"
-#   subject_alternative_names = ["*.singlepageapp.xyz"]
-#   validation_method         = "DNS"
+resource "aws_acm_certificate" "acm" {
+  domain_name               = "singlepageapp.xyz"
+  subject_alternative_names = ["*.singlepageapp.xyz"]
+  validation_method         = "DNS"
 
-#   lifecycle {
-#     create_before_destroy = true
-#   }
-# }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
 
 # resource "aws_route53_record" "validation" {
 #   zone_id = aws_route53_zone.dns.zone_id
