@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
-mkdir lighthouse && cd lighthouse
-npm install lighthouse
+mkdir nodejs && cd nodejs
+npm install lighthouse chrome-aws-lambda
 cd ..
-zip -r lighthouse.zip lighthouse
-rm -rf lighthouse
+zip -r lighthouse.zip nodejs
+rm -rf nodejs
