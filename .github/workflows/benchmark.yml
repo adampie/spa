@@ -11,9 +11,7 @@ defaults:
   run:
     working-directory: benchmark
 
-env:
-  BUCKET: spa-xyz-dashboard
-  AWS_DEFAULT_REGION: us-east-1
+#env:
 
 jobs:
   build:
@@ -34,7 +32,9 @@ jobs:
           unzip awscliv2.zip
           sudo ./aws/install
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm install -g serverless
+          npm ci
 
   deploy:
     runs-on: ubuntu-latest
@@ -66,7 +66,8 @@ jobs:
     steps:
       - name: Deploy
         run: |
-          echo ${{matrix.AWS_REGION}}
+          sls deploy -v
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{matrix.AWS_REGION}}
