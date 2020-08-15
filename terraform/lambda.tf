@@ -28,15 +28,15 @@ resource "aws_lambda_layer_version" "us-west-2" {
 
   compatible_runtimes = ["nodejs12.x"]
 }
-//
-//resource "aws_lambda_layer_version" "af-south-1" {
-//provider = aws.af-south-1
-//filename   = "chrome_aws_lambda.zip"
-//layer_name = "chrome"
-//
-//compatible_runtimes = ["nodejs12.x"]
-//}
-//
+
+resource "aws_lambda_layer_version" "af-south-1" {
+  provider   = aws.af-south-1
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
 resource "aws_lambda_layer_version" "ap-east-1" {
   provider   = aws.ap-east-1
   filename   = "chrome_aws_lambda.zip"
