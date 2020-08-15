@@ -4,6 +4,8 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: ${opt:region}
+  tracing:
+    lambda: true
 
 plugins:
   - serverless-prune-plugin
