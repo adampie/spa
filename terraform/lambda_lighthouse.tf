@@ -12,31 +12,31 @@ resource "aws_lambda_layer_version" "lighthouse-us-east-2" {
 
   compatible_runtimes = ["nodejs12.x"]
 }
-//
-//resource "aws_lambda_layer_version" "lighthouse-us-west-1" {
-//  provider   = aws.us-west-1
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-us-west-2" {
-//  provider   = aws.us-west-2
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-af-south-1" {
-//  provider   = aws.af-south-1
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
+
+resource "aws_lambda_layer_version" "lighthouse-us-west-1" {
+  provider   = aws.us-west-1
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-us-west-2" {
+  provider   = aws.us-west-2
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-af-south-1" {
+  provider   = aws.af-south-1
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
 //resource "aws_lambda_layer_version" "lighthouse-ap-east-1" {
 //  provider   = aws.ap-east-1
 //  filename   = "chrome_aws_lambda.zip"
