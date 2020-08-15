@@ -20,25 +20,25 @@ jobs:
       matrix:
         AWS_REGION: [
           "us-east-1",
-          "us-east-2",
-          "us-west-1",
-          "us-west-2",
-          "af-south-1",
-          "ap-east-1",
-          "ap-south-1",
-          "ap-northeast-2",
-          "ap-southeast-1",
-          "ap-southeast-2",
-          "ap-northeast-1",
-          "ca-central-1",
-          "eu-central-1",
+#          "us-east-2",
+#          "us-west-1",
+#          "us-west-2",
+#          "af-south-1",
+#          "ap-east-1",
+#          "ap-south-1",
+#          "ap-northeast-2",
+#          "ap-southeast-1",
+#          "ap-southeast-2",
+#          "ap-northeast-1",
+#          "ca-central-1",
+#          "eu-central-1",
           "eu-west-1",
-          "eu-west-2",
-          "eu-south-1",
-          "eu-west-3",
-          "eu-north-1",
-          "me-south-1",
-          "sa-east-1"
+#          "eu-west-2",
+#          "eu-south-1",
+#          "eu-west-3",
+#          "eu-north-1",
+#          "me-south-1",
+#          "sa-east-1",
         ]
     steps:
       - uses: actions/checkout@v2
@@ -64,9 +64,13 @@ jobs:
           npm install -g serverless
           npm ci
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{matrix.AWS_REGION}}
+
       - name: Deploy
         run: |
           sls deploy -v --region ${{matrix.AWS_REGION}}
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
