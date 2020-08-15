@@ -29,6 +29,7 @@ functions:
       URL: "http://spa-xyz-s3.s3-website-us-east-1.amazonaws.com"
     layers:
       - "arn:aws:lambda:${opt:region}:${env:AWS_ACCOUNT}:layer:chrome:1"
+      - "arn:aws:lambda:${opt:region}:${env:AWS_ACCOUNT}:layer:lighthouse:1"
 
   s3_acceleration:
     handler: handler.lighthouse
@@ -38,6 +39,7 @@ functions:
       URL: "https://spa-xyz-s3-acceleration.s3-accelerate.amazonaws.com/index.html"
     layers:
       - "arn:aws:lambda:${opt:region}:${env:AWS_ACCOUNT}:layer:chrome:1"
+      - "arn:aws:lambda:${opt:region}:${env:AWS_ACCOUNT}:layer:lighthouse:1"
 
   s3_cloudfront:
     handler: handler.lighthouse
@@ -47,3 +49,4 @@ functions:
       URL: "https://us-east-1.singlepageapp.xyz"
     layers:
       - "arn:aws:lambda:${opt:region}:${env:AWS_ACCOUNT}:layer:chrome:1"
+      - "arn:aws:lambda:${opt:region}:${env:AWS_ACCOUNT}:layer:lighthouse:1"
