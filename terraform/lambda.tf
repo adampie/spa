@@ -1,33 +1,33 @@
-//resource "aws_lambda_layer_version" "us-east-1" {
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome_aws_lambda"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "us-east-2" {
-//  provider = aws.us-east-2
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome_aws_lambda"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "us-west-1" {
-//  provider = aws.us-west-1
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome_aws_lambda"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "us-west-2" {
-//  provider = aws.us-west-2
-//  filename   = "chrome_aws_lambda.zip"
-//  layer_name = "chrome_aws_lambda"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
+resource "aws_lambda_layer_version" "us-east-1" {
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome_aws_lambda"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "us-east-2" {
+  provider = aws.us-east-2
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome_aws_lambda"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "us-west-1" {
+  provider = aws.us-west-1
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome_aws_lambda"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "us-west-2" {
+  provider = aws.us-west-2
+  filename   = "chrome_aws_lambda.zip"
+  layer_name = "chrome_aws_lambda"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
 //
 //resource "aws_lambda_layer_version" "af-south-1" {
 //provider = aws.af-south-1
