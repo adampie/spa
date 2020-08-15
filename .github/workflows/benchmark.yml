@@ -64,10 +64,11 @@ jobs:
           npm install -g serverless
           npm ci
 
-      - name: Deploy
-        run: |
-          sls deploy -v
+      - name: serverless deploy
+        uses: serverless/github-action@master
+        with:
+          args: deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: ${{matrix.AWS_REGION}}
+          AWS_REGION: ${{matrix.AWS_REGION}}
