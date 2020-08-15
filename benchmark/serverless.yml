@@ -1,0 +1,10 @@
+service: benchmark
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ${env:AWS_REGION}
+
+functions:
+  lighthouse:
+    handler: handler.hello
