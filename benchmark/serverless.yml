@@ -8,3 +8,11 @@ provider:
 functions:
   lighthouse:
     handler: handler.hello
+
+plugins:
+  - serverless-prune-plugin
+
+custom:
+  prune:
+    automatic: true
+    number: 3
