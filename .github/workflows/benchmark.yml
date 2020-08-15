@@ -11,7 +11,8 @@ defaults:
   run:
     working-directory: benchmark
 
-#env:
+env:
+  AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
 
 jobs:
   build:
@@ -74,5 +75,3 @@ jobs:
       - name: Deploy
         run: |
           sls deploy -v --region ${{matrix.AWS_REGION}}
-        with:
-          AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
