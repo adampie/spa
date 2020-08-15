@@ -1,18 +1,47 @@
 'use strict';
 
-module.exports.hello = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
+const AWS = require("aws-sdk");
+const chromium = require("chrome-aws-lambda");
+const lighthouse = require('lighthouse');
+const reportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+module.exports.lighthouse = async () => {
+    let browser = null;
+    let url = process.env.URL
+
+    browser = await chromium.puppeteer.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
+        headless: chromium.headless,
+        ignoreHTTPSErrors: true,
+    });
+
+    const {lhr} = await lighthouse(url, {
+        port: (new URL(browser.wsEndpoint())).port,
+        output: 'json',
+        logLevel: 'info',
+    });
+
+    const json = reportGenerator.generateReport(lhr, 'json');
+
+    const audits = JSON.parse(json).audits;
+    const first_contentful_paint = audits['first-contentful-paint'].displayValue;
+    const total_blocking_time = audits['total-blocking-time'].displayValue;
+    const time_to_interactive = audits['interactive'].displayValue;
+
+    const response = {
+        "fcp": first_contentful_paint,
+        "tbt": total_blocking_time,
+        "tti": time_to_interactive,
+        "performance": lhr.categories['performance'].score,
+        "accessibility": lhr.categories['accessibility'].score,
+        "best-practices": lhr.categories['best-practices'].score,
+        "seo": lhr.categories['seo'].score,
+        "pwa": lhr.categories['pwa'].score,
+    }
+
+    await browser.close();
+
+    return response
 };
