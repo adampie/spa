@@ -64,6 +64,7 @@ jobs:
           "sa-east-1"
       ]
     steps:
+      - uses: actions/checkout@v2
       - name: Deploy
         run: |
           sls deploy -v
