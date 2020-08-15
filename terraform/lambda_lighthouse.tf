@@ -93,53 +93,53 @@ resource "aws_lambda_layer_version" "lighthouse-ap-northeast-1" {
 //  compatible_runtimes = ["nodejs12.x"]
 //}
 //
-//resource "aws_lambda_layer_version" "lighthouse-eu-central-1" {
-//  provider   = aws.eu-central-1
-//  filename   = "lighthouse.zip"
-//  layer_name = "lighthouse"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-eu-west-1" {
-//  provider   = aws.eu-west-1
-//  filename   = "lighthouse.zip"
-//  layer_name = "lighthouse"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-eu-west-2" {
-//  provider   = aws.eu-west-2
-//  filename   = "lighthouse.zip"
-//  layer_name = "lighthouse"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-eu-south-1" {
-//  provider   = aws.eu-south-1
-//  filename   = "lighthouse.zip"
-//  layer_name = "lighthouse"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-eu-west-3" {
-//  provider   = aws.eu-west-3
-//  filename   = "lighthouse.zip"
-//  layer_name = "lighthouse"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
-//
-//resource "aws_lambda_layer_version" "lighthouse-eu-north-1" {
-//  provider   = aws.eu-north-1
-//  filename   = "lighthouse.zip"
-//  layer_name = "lighthouse"
-//
-//  compatible_runtimes = ["nodejs12.x"]
-//}
+resource "aws_lambda_layer_version" "lighthouse-eu-central-1" {
+  provider   = aws.eu-central-1
+  filename   = "lighthouse.zip"
+  layer_name = "lighthouse"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-eu-west-1" {
+  provider   = aws.eu-west-1
+  filename   = "lighthouse.zip"
+  layer_name = "lighthouse"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-eu-west-2" {
+  provider   = aws.eu-west-2
+  filename   = "lighthouse.zip"
+  layer_name = "lighthouse"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-eu-south-1" {
+  provider   = aws.eu-south-1
+  filename   = "lighthouse.zip"
+  layer_name = "lighthouse"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-eu-west-3" {
+  provider   = aws.eu-west-3
+  filename   = "lighthouse.zip"
+  layer_name = "lighthouse"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
+
+resource "aws_lambda_layer_version" "lighthouse-eu-north-1" {
+  provider   = aws.eu-north-1
+  filename   = "lighthouse.zip"
+  layer_name = "lighthouse"
+
+  compatible_runtimes = ["nodejs12.x"]
+}
 //
 //resource "aws_lambda_layer_version" "lighthouse-me-south-1" {
 //  provider   = aws.me-south-1
