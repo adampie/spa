@@ -34,7 +34,7 @@ module.exports.lighthouse = async () => {
     const response = {
         "url": url,
         "date": Date.now(),
-        "region": process.env.AWS_REGION,
+        "region": process.env.REGION,
         "fcp": first_contentful_paint,
         "tbt": total_blocking_time,
         "tti": time_to_interactive,

@@ -15,7 +15,7 @@ provider:
       Resource: "arn:aws:sqs:us-east-1:${env:AWS_ACCOUNT}:spa-web-vitals"
   environment:
     SQS_URL: "https://sqs.us-east-1.amazonaws.com/${env:AWS_ACCOUNT}/spa-web-vitals"
-    AWS_REGION: ${opt:region}
+    REGION: ${opt:region}
 
 plugins:
   - serverless-prune-plugin
