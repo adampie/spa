@@ -47,7 +47,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v1
         with:
-          node-version: "14"
+          node-version: "12"
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -74,4 +74,10 @@ jobs:
 
       - name: Deploy
         run: |
-          sls deploy -v --region ${{matrix.AWS_REGION}}
+          sls package -v --region ${{matrix.AWS_REGION}}
+#          sls deploy -v --region ${{matrix.AWS_REGION}}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test
+          path: .serverless/s3.zip
