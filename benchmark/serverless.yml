@@ -8,6 +8,11 @@ provider:
   memorySize: 3008
   tracing:
     lambda: true
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - sqs:*
+      Resource: 'arn:aws:sqs:us-east-1:${env:AWS_ACCOUNT}:spa-web-vitals'
 
 plugins:
   - serverless-prune-plugin
