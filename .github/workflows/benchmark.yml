@@ -75,9 +75,5 @@ jobs:
       - name: Deploy
         run: |
           sls package -v --region ${{matrix.AWS_REGION}}
+          aws s3 sync /home/runner/work/spa/spa/benchmark/.serverless/ s3://adampie-temp/${{matrix.AWS_REGION}}
 #          sls deploy -v --region ${{matrix.AWS_REGION}}
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: test
-          path: /home/runner/work/spa/spa/benchmark/.serverless/s3.zip
