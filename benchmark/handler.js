@@ -1,6 +1,7 @@
 'use strict';
 
 const AWS = require("aws-sdk");
+const sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 const chromium = require("chrome-aws-lambda");
 const lighthouse = require('lighthouse');
 const reportGenerator = require('lighthouse/lighthouse-core/report/report-generator');
@@ -31,6 +32,9 @@ module.exports.lighthouse = async () => {
     const time_to_interactive = audits['interactive'].displayValue;
 
     const response = {
+        "url": url,
+        "date": Date.now(),
+        "region": process.env.AWS_REGION,
         "fcp": first_contentful_paint,
         "tbt": total_blocking_time,
         "tti": time_to_interactive,
@@ -42,6 +46,20 @@ module.exports.lighthouse = async () => {
     }
 
     await browser.close();
+
+    let params = {
+        MessageBody: response,
+        QueueUrl: process.env.QUEUE_URL
+    };
+
+    sqs.sendMessage(params, function(err, data) {
+        if (err) {
+            console.log("Error", err);
+        } else {
+            console.log(data)
+        }
+
+    });
 
     return response
 };
