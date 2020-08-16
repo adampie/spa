@@ -45,8 +45,6 @@ module.exports.lighthouse = async () => {
         "pwa": lhr.categories['pwa'].score,
     }
 
-    await browser.close();
-
     let params = {
         MessageBody: JSON.stringify(response),
         QueueUrl: process.env.SQS_URL
@@ -61,6 +59,8 @@ module.exports.lighthouse = async () => {
         }
 
     });
+
+    await browser.close();
 
     return response
 };
