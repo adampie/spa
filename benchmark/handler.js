@@ -32,9 +32,9 @@ module.exports.lighthouse = async () => {
     const time_to_interactive = audits['interactive'].displayValue;
 
     const response = {
-        "url": url,
+        "name": process.env.AWS_LAMBDA_FUNCTION_NAME,
         "date": Date.now(),
-        "region": process.env.REGION,
+        "region": process.env.AWS_REGION,
         "fcp": first_contentful_paint,
         "tbt": total_blocking_time,
         "tti": time_to_interactive,
