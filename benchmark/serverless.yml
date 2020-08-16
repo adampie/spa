@@ -27,13 +27,19 @@ functions:
     handler: handler.lighthouse
     environment:
       URL: "http://spa-xyz-s3.s3-website-us-east-1.amazonaws.com"
+    events:
+      - schedule: rate(1 hour)
 
   s3_acceleration:
     handler: handler.lighthouse
     environment:
       URL: "https://spa-xyz-s3-acceleration.s3-accelerate.amazonaws.com/index.html"
+    events:
+      - schedule: rate(1 hour)
 
   s3_cloudfront:
     handler: handler.lighthouse
     environment:
       URL: "https://us-east-1.singlepageapp.xyz"
+    events:
+      - schedule: rate(1 hour)
