@@ -48,13 +48,14 @@ module.exports.lighthouse = async () => {
     await browser.close();
 
     let params = {
-        MessageBody: response,
-        QueueUrl: process.env.QUEUE_URL
+        MessageBody: JSON.stringify(response),
+        QueueUrl: process.env.SQS_URL
     };
 
     sqs.sendMessage(params, function(err, data) {
         if (err) {
             console.log("Error", err);
+            process.exit(1);
         } else {
             console.log(data)
         }
