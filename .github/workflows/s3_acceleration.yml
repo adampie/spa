@@ -42,7 +42,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        run: |
+          rm public/manifest.json && mv public/manifest_acceleration.json public/manifest.json
+          npm run build
 
       - name: Deploy
         run: |
