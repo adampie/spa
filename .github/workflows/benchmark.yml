@@ -80,4 +80,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: test
-          path: .serverless/s3.zip
+          path: /home/runner/work/spa/spa/benchmark/.serverless/s3.zip
