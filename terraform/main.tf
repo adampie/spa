@@ -39,6 +39,20 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "oai"
 }
 
+resource "aws_sqs_queue" "queue" {
+  name = "spa-web-vitals"
+  redrive_policy = jsonencode({
+    deadLetterTargetArn = aws_sqs_queue.deadletter.arn
+    maxReceiveCount     = 3
+  })
+}
+
+resource "aws_sqs_queue" "deadletter" {
+  name = "spa-web-vitals-dlq"
+}
+
+// SPA
+
 module "dashboard" {
   source = "./modules/s3_cloudfront"
 
