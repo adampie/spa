@@ -4,6 +4,8 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: ${opt:region}
+  timeout:  30
+  memorySize: 3008
   tracing:
     lambda: true
 
@@ -23,21 +25,15 @@ custom:
 functions:
   s3:
     handler: handler.lighthouse
-    timeout:  30
-    memorySize: 1536
     environment:
       URL: "http://spa-xyz-s3.s3-website-us-east-1.amazonaws.com"
 
   s3_acceleration:
     handler: handler.lighthouse
-    timeout:  30
-    memorySize: 1536
     environment:
       URL: "https://spa-xyz-s3-acceleration.s3-accelerate.amazonaws.com/index.html"
 
   s3_cloudfront:
     handler: handler.lighthouse
-    timeout:  30
-    memorySize: 1536
     environment:
       URL: "https://us-east-1.singlepageapp.xyz"
