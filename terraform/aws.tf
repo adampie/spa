@@ -157,49 +157,4 @@ resource "aws_dynamodb_table" "spa" {
     name = "SK"
     type = "S"
   }
-
-  attribute {
-    name = "REGION"
-    type = "S"
-  }
-
-  attribute {
-    name = "FCP"
-    type = "S"
-  }
-
-  attribute {
-    name = "TBT"
-    type = "S"
-  }
-
-  attribute {
-    name = "TTI"
-    type = "S"
-  }
-
-  attribute {
-    name = "PERFORMANCE"
-    type = "S"
-  }
-
-  attribute {
-    name = "ACCESSIBILITY"
-    type = "S"
-  }
-
-  attribute {
-    name = "BESTPRACTICES"
-    type = "S"
-  }
-
-  attribute {
-    name = "SEO"
-    type = "S"
-  }
-  
-  attribute {
-    name = "PWA"
-    type = "S"
-  }
 }
